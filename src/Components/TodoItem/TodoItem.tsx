@@ -152,12 +152,15 @@ export const TodoItem: React.FC<Props> = ({
 
       {/* overlay завжди показується при isTemp, updating або deleting */}
 
-      {shouldShowLoader && (
-        <div data-cy="TodoLoader" className="modal overlay is-active">
-          <div className="modal-background has-background-white-ter" />
-          <div className="loader" />
-        </div>
-      )}
+      <div
+        data-cy="TodoLoader"
+        className={classNames('modal overlay', {
+          'is-active': shouldShowLoader,
+        })}
+      >
+        <div className="modal-background has-background-white-ter" />
+        <div className="loader" />
+      </div>
     </div>
   );
 };
