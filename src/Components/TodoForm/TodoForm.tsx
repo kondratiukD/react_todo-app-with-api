@@ -44,6 +44,8 @@ export const TodoForm: React.FC<Props> = ({
       return;
     }
 
+    setErrorMessage(ErrorType.DEFAULT);
+
     addTodo({
       id: 0,
       userId: USER_ID,

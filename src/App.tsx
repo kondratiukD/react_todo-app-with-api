@@ -81,6 +81,7 @@ export const App: React.FC = () => {
       })
       .finally(() => {
         setDeletingTodoId(null);
+        inputRef.current?.focus();
       });
   };
 
