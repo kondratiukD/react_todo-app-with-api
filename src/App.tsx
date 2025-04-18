@@ -55,6 +55,11 @@ export const App: React.FC = () => {
       .then(newTodo => setTodos(currentTodo => [...currentTodo, newTodo]))
       .catch(error => {
         setErrorMessage(ErrorType.ADD);
+
+        setTimeout(() => {
+          setErrorMessage(ErrorType.DEFAULT);
+        }, 3000);
+
         throw error;
       })
       .finally(() => {
@@ -141,7 +146,7 @@ export const App: React.FC = () => {
     );
 
     todosToUpdate.forEach(todo => {
-      updateTodoStatus({ ...todo, completed: activeTodos });
+      updateTodoStatus({ ...todo, completed: shouldCompleteAll });
     });
   };
 

@@ -27,14 +27,14 @@ export const Footer: React.FC<Props> = ({
         {Object.values(Filter).map(f => (
           <a
             key={f}
-            href={`#/${f.toLowerCase()}`}
+            href="#/"
             className={classNames('filter__link', {
               selected: currentFilter === f,
             })}
-            data-cy={`FilterLink${f}`}
+            data-cy={`FilterLink${f.charAt(0).toUpperCase() + f.slice(1)}`}
             onClick={() => setFilter(f)}
           >
-            {f.charAt(0).toUpperCase() + f.slice(1).toLowerCase()}
+            {f}
           </a>
         ))}
       </nav>

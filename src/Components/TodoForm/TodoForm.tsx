@@ -37,6 +37,10 @@ export const TodoForm: React.FC<Props> = ({
     if (!title.trim()) {
       setErrorMessage(ErrorType.TITLE);
 
+      setTimeout(() => {
+        setErrorMessage(ErrorType.DEFAULT);
+      }, 3000);
+
       return;
     }
 
@@ -45,7 +49,14 @@ export const TodoForm: React.FC<Props> = ({
       userId: USER_ID,
       title: title.trim(),
       completed: false,
-    }).then(() => setTitle(''));
+    })
+      .then(() => setTitle(''))
+      .catch(error => {
+        setErrorMessage(ErrorType.ADD);
+        setTimeout(() => setErrorMessage(ErrorType.DEFAULT), 3000);
+
+        throw error;
+      });
   };
 
   return (
