@@ -17,6 +17,7 @@ type Props = {
 export const TodoItem: React.FC<Props> = ({
   todo,
   isLoading,
+  loadingByIds,
   isBeingDeleted,
   onDeleteTodo = () => {},
   onUpdateTodoStatus = () => {},
@@ -98,7 +99,7 @@ export const TodoItem: React.FC<Props> = ({
     handleUpdate();
   };
 
-  const shouldShowLoader = (!id && isLoading) || isBeingDeleted;
+  const shouldShowLoader = (!id && isLoading) || isBeingDeleted || loadingByIds;
 
   return (
     <div
